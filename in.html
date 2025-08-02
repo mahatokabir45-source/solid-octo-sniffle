@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Life Journey</title>
+  <style>
+    body {
+      background-color: #797872;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ccc;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-style: italic;
+      background-color: #4c4c46;
+    }
+    h1 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #ffd700;
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      vertical-align: bottom;
+    }
+    @keyframes blink {
+      0%, 50% {
+        opacity: 1;
+      }
+      51%, 100% {
+        opacity: 0;
+      }
+    }
+    p {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Life Journey from Nursery to Class 12</h1>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+
+  <script>
+    const paragraphs = document.querySelectorAll(".container p");
+
+    const messages = [
+      "My journey started in nursery, where I first discovered the joy of learning and making friends. Those early years were filled with play, stories, and curiosity that laid the foundation for everything to come. As I moved through primary school, I began to enjoy subjects like math and science, and my love for reading grew stronger. In secondary school, I faced new challenges and opportunities that helped me build confidence and develop important skills. I worked hard, participated in various activities, and made memories with classmates and teachers. Now, as a student in class 12, I look back proudly at all I have achieved and eagerly look forward to the future, ready to learn more and chase my dreams.",
+      "After completing Class 12, I am excited to embark on new adventures and challenges. I plan to continue my education, explore different fields, and develop my skills further. I believe that with dedication and hard work, I can achieve my goals and make a positive impact. The lessons I’ve learned so far have prepared me well, and I am eager to step into the next chapter of my life with confidence and hope.",
+      "After completing my Bachelor’s degree, I am eager to apply the knowledge and skills I have gained in real-world situations. I plan to pursue further learning opportunities, whether through advanced studies or professional certifications, to deepen my expertise. My goal is to contribute meaningfully in my chosen field and make a positive impact through my work. With determination and continuous growth, I am confident I can face new challenges and achieve success in my career and life.",
+      "Looking ahead, I am excited to explore new horizons both personally and professionally. I aim to keep learning, embrace new technologies, and develop skills that will help me adapt in an ever-changing world. I believe in setting goals, staying motivated, and working hard to turn my dreams into reality. With a positive mindset and a strong support system, I’m ready to face whatever challenges come my way and make the most out of every opportunity.",
+      "As I continue on this journey, I am committed to growing not only professionally but also personally. Building meaningful relationships, staying curious, and giving back to my community are important to me. I understand that success is not just about achievements, but also about learning from failures and staying humble. I am excited for the future and ready to embrace all the experiences that will shape me into the person I aspire to be.",
+      "As I move forward, I am eager to embrace new challenges and opportunities that will help me grow both professionally and personally. I believe that staying adaptable, open-minded, and willing to learn are key to success in today’s fast-paced world. With a strong foundation built over the years, I am confident in my ability to overcome obstacles and make meaningful contributions wherever I go.",
+      "I also believe in the importance of balance — nurturing my passions, hobbies, and relationships alongside my career goals. Life is a continuous journey of growth, and I strive to stay positive, motivated, and grateful for every experience. With this mindset, I am ready to face the future with confidence and enthusiasm.",
+      "In the years to come, I hope to not only achieve personal success but also to inspire and help others along their own journeys. Giving back to the community and making a positive impact are values I hold dear. I am excited about the possibilities ahead and look forward to contributing to a better future for everyone."
+    ];
+
+    function typeWriter(el, text, speed, callback) {
+      let j = 0;
+      el.textContent = '';
+      const cursor = document.createElement('span');
+      cursor.classList.add('cursor');
+      el.appendChild(cursor);
+
+      function typeChar() {
+        if (j < text.length) {
+          el.textContent = text.substring(0, j + 1);
+          el.appendChild(cursor);
+          j++;
+          setTimeout(typeChar, speed);
+        } else {
+          setTimeout(() => {
+            cursor.remove();
+            callback();
+          }, 700);
+        }
+      }
+      typeChar();
+    }
+
+    function startTyping(index) {
+      if (index >= paragraphs.length) return;
+      typeWriter(paragraphs[index], messages[index], 30, () => startTyping(index + 1));
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      paragraphs.forEach(p => p.textContent = '');
+      startTyping(0);
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
